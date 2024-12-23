@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light mode colors - refined for better contrast */
+  --primary: #2563eb;    /* Bright blue */
+  --primary-dark: #1d4ed8;
+  --secondary: #4b5563;  /* Darker gray for better readability */
+  --accent: #f97316;     /* Vibrant orange */
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --muted: #64748b;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
+  --border: #e2e8f0;
+}
+
+.dark {
+  /* Dark mode colors - optimized for maximum readability */
+  --primary: #3b82f6;    /* Brighter blue for dark mode */
+  --primary-dark: #2563eb;
+  --secondary: #e2e8f0;  /* Much lighter gray for better contrast */
+  --accent: #fb923c;     /* Brighter orange */
+  --background: #0f172a;
+  --foreground: #f8fafc; /* Very light gray, almost white */
+  --muted: #cbd5e1;      /* Lighter muted text */
+  --card: #1e293b;       /* Slightly lighter card background */
+  --card-hover: #334155;
+  --border: #334155;
+}
+
+/* Base styles */
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+/* Dark mode optimizations */
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .bg-card {
+    background-color: var(--card);
+  }
+  
+  .bg-card-hover {
+    background-color: var(--card-hover);
+  }
+  
+  .text-muted {
+    color: var(--muted);
+  }
+  
+  .border-custom {
+    border-color: var(--border);
+  }
+
+  /* Dark mode text utilities */
+  .dark .text-adaptive {
+    @apply text-gray-100;
+  }
+  
+  .dark .text-adaptive-secondary {
+    @apply text-gray-300;
+  }
+}
+
+/* Improved focus styles for better accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
